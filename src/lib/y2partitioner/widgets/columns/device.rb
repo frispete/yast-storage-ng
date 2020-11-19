@@ -53,10 +53,12 @@ module Y2Partitioner
 
         # The device name
         #
+        # @param entry [DeviceTableEntry]
         # @return [String]
         def device_name(device, entry)
-          return fstab_device_name(device, entry) if fstab_entry?(device)
-          return blk_device_name(device, entry) unless device.is?(:blk_filesystem)
+          return left_to_right(fstab_device_name(device, entry)) if fstab_entry?(device)
+          return left_to_right(blk_device_name(device, entry)) unless device.is?(:blk_filesystem)
+          # FS name
           return device.type.to_human_string unless device.multidevice?
 
           format(
