@@ -45,9 +45,11 @@ module Y2Partitioner
           return "" if filesystem.nil?
           return "" if part_of_multidevice?(device, filesystem)
 
-          return "WTF" if filesystem.mount_path.nil?
-          res = left_to_right(filesystem.mount_path)
-          res += " *" if filesystem.mount_point && !filesystem.mount_point.active?
+          fs_mp = filesystem.mount_point
+          return "" unless fs_mp
+
+          res = left_to_right(fs_mp.path)
+          res += " *" unless fs_mp.active?
           res
         end
       end
