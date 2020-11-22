@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 22 22:55:37 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Display pathnames correctly in a Right-to-Left context
+  (bsc#1128091).
+- 4.3.23
+
+-------------------------------------------------------------------
 Fri Nov 20 12:53:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - print properly help to avoid accidental opening of module by bash
